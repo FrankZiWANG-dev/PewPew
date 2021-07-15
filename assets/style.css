@@ -1,0 +1,22 @@
+html {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 150%;
+  text-align: center;
+  background-color: #84b63a;
+}
+
+h1 {
+  font-size: 120%;
+}
+
+#text {
+  background-color: #e4e4ad;
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border: solid 2px brown;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+/*# sourceMappingURL=style.css.map */
