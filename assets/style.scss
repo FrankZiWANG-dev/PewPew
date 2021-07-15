@@ -26,16 +26,33 @@ h1 {
     font-size: 120%;
 }
 
-#text {
-
+@mixin container {
     background-color: rgb(228, 228, 173);
-    margin-top: 5%;
+    margin-top: 3%;
     margin-left: 10%;
     margin-right: 10%;
     border: solid 2px brown;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 10px;    
+}
+
+#text {
+
+    @include container;
     
 }
 
+#game {
+    
+    @include container;
+    padding-top: 20px;
+
+}
+
+#canvas {
+    background-color: rgb(230, 230, 255);
+    border: solid 2px brown;
+    width: 80%;
+    min-height: 400px;
+}

@@ -11,12 +11,31 @@ h1 {
 
 #text {
   background-color: #e4e4ad;
-  margin-top: 5%;
+  margin-top: 3%;
   margin-left: 10%;
   margin-right: 10%;
   border: solid 2px brown;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
+}
+
+#game {
+  background-color: #e4e4ad;
+  margin-top: 3%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border: solid 2px brown;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+
+#canvas {
+  background-color: #e6e6ff;
+  border: solid 2px brown;
+  width: 80%;
+  min-height: 400px;
 }
 /*# sourceMappingURL=style.css.map */
