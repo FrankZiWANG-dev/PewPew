@@ -32,8 +32,47 @@ h1 {
   padding-top: 20px;
 }
 
+#score {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
 #canvas {
-  background-color: #e6e6ff;
+  background-color: white;
   border: solid 2px brown;
+}
+
+#reload {
+  background-color: #e4e4ad;
+  margin-top: 3%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border: solid 2px brown;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  font-size: 150%;
+}
+
+button {
+  font-family: 'Shadows Into Light', cursive;
+  font-weight: bold;
+  font-size: 90%;
+}
+
+#start {
+  background-color: #e4e4ad;
+  margin-top: 3%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border: solid 2px brown;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  font-size: 150%;
+}
+
+#starter {
+  margin: 50px;
 }
 /*# sourceMappingURL=style.css.map */

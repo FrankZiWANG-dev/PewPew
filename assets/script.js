@@ -1,29 +1,44 @@
-//make images appear
+//hide replay button and game
+document.getElementById("reload").style.display = "none";
+document.getElementById("game").style.display = "none";
+document.getElementById("start").style.display = "block";
+
+//hit play button to display game
+document.getElementById("starter").addEventListener("click", () => {
+  document.getElementById("start").style.display = "none";
+  document.getElementById("game").style.display = "block";
+})
+
+// on load
 window.onload = function() {
-    let canvas = document.getElementById("canvas");
+  //initiate canvas  
+  let canvas = document.getElementById("canvas");
     let ctx = canvas.getContext("2d");
 
+    //base variables
     let cannon = document.getElementById("cannon");
     let projectile = document.getElementById("projectile");
     let target = document.getElementById("target");
+    let score = 0;
 
+    //base positioning
     let positionCannon= 260;
     let shooting = 370;
-    let positionVirus= goal();
+    //create array of positions for 10 targets
+    let positionVirus= [];
+    for (x=0; x<10; x++){
+      positionVirus[x]=goal();
+    }
+console.log(positionVirus);
     function goal(min, max) {
         min = Math.ceil(20);
         max = Math.floor(500);
         return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
       }
-    
-    // //cut virus image into circle
-    // ctx.beginPath();
-    // ctx.arc(positionVirus +40, 60, 40, 0, 2 * Math.PI, false);
-    // ctx.clip();
 
+    //make cannon and first target appear
     ctx.drawImage(cannon, positionCannon, 450, 80, 80);
-    // ctx.drawImage(projectile, positionCannon, shooting, 80, 80);
-    ctx.drawImage(target, positionVirus, 20, 80, 80);
+    ctx.drawImage(target, positionVirus[score], 20, 80, 80);
     
     //moving and shooting
     window.addEventListener("keydown", keysPressed, false);
@@ -62,19 +77,47 @@ function keysPressed(e) {
 
     //function to move projectile
     function start() {
-      //clear previous image
-      ctx.clearRect(positionCannon, shooting, 80, 80);
+
+       //make projectile appear
+       ctx.drawImage(projectile, positionCannon, shooting, 80, 80);
 
       //if didn't reach top end of box, move 1px
       if (shooting !==20){
+      //clear previous image
+      ctx.clearRect(positionCannon, shooting, 80, 80);
       shooting--;
-      console.log(shooting);
       ctx.drawImage(projectile, positionCannon, shooting, 80, 80);
-      }
+
+        //if hit
+        //if left edge of projectile is between edges of target
+        if (shooting == 21) {  
+          if ( ( (positionCannon <= Number(positionVirus[score]) )
+          && (Number(positionVirus[score]) <= (positionCannon+80) ) )
+            || ( (positionCannon <= Number(positionVirus[score]+80) )
+                  && (Number(positionVirus[score]+80) <= (positionCannon+80) ) ) ){
+                //update score
+                score++;
+                document.getElementById("score").innerHTML="Viruses destroyed: " + score + " /10";
+                //clear old target
+                ctx.clearRect(positionVirus[score-1], 20, 80, 80);
+                //generate new target
+                ctx.drawImage(target, positionVirus[score] , 20, 80, 80);
+
+                if (score == 10){
+                  document.getElementById("game").style.display = "none";
+                  document.getElementById("reload").style.display = "block";
+                }
+              }
+          else {console.log("prout");}
+
+            }
+
+        }
 
       //if reached, stop interval
       else {
         clearInterval(animation);
+        ctx.clearRect(positionCannon, 20, 80, 80);
       }
     }
 
@@ -85,18 +128,20 @@ function keysPressed(e) {
     if (shooting == 20){
       shooting = 370;
     }
-    
-    console.log('shoot')
 
   }
 
   e.preventDefault();
-}
+  }
 
-//On Key Up
-function keysReleased(e) {
-  // mark keys that were released
-  keys[e.keyCode] = false;
-}
+  //On Key Up
+  function keysReleased(e) {
+    // mark keys that were released
+    keys[e.keyCode] = false;
+  }
 
 };
+
+document.getElementById("reload").addEventListener("click", () => {
+  document.location.reload();
+})

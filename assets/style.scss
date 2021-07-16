@@ -50,8 +50,34 @@ h1 {
 
 }
 
+#score {
+
+    margin-top: 0px;
+    margin-bottom: 5px;
+
+}
+
 #canvas {
-    background-color: rgb(230, 230, 255);
+    background-color: white;
     border: solid 2px brown;
 }
 
+#reload {
+    @include container;
+    font-size: 150%;
+}
+
+button {
+    font-family: 'Shadows Into Light', cursive;
+    font-weight: bold;
+    font-size: 90%;
+}
+
+#start {
+    @include container;
+    font-size: 150%;
+}
+
+#starter {
+    margin: 50px;
+}
